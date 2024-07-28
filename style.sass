@@ -1,0 +1,64 @@
+.calc
+    &-container
+        display: flex
+        flex-direction: column
+        margin: 50px auto
+        width: 300px
+        height: 500px
+        border: 1px solid #000
+        border-radius: 20px
+        background: #fff
+        color: #000
+        font-family: Arial
+        padding: 18px
+
+    &-screen
+        height: 30%
+        display: flex
+        justify-content: end
+        align-items: end
+        border-bottom: 1px solid #000
+
+        span
+            font-size: 4rem
+            margin: 0
+            padding: 12px
+
+    &-btns
+        display: flex
+        flex-wrap: wrap
+        gap: 12px
+        padding-top: 12px
+        justify-content: center
+        flex-grow: 1
+        align-items: flex-end
+
+    &-btn
+        width: 60px
+        height: 60px
+        flex: 1 1 20%
+        background: #fff
+        border: 1px solid #000
+        border-radius: 50%
+        text-align: center
+        line-height: 60px
+        font-size: 1.5rem
+        cursor: pointer
+        user-select: none
+
+        &:hover
+            filter: brightness(120%)
+
+        &:active
+            filter: brightness(96%)
+
+        &.orange
+            color: #ff9501
+
+        &.orange-reverse
+            background: #ff9501
+            color: #fff
+
+        &.zero
+            flex: 1 1 50%
+            border-radius: 30px
