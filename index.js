@@ -21,6 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
             clear();
         }
 
+        if (number === '.' && currentInput.includes('.')) {
+            return;
+        }
+
+        if (currentInput.includes('.')) {
+            const decimalPart = currentInput.split('.')[1];
+            if (decimalPart.length >= 5) {
+                return;
+            }
+        }
+
         if (currentInput === '0' && number !== '.') {
             currentInput = number;
         } else {
