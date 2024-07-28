@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateScreen();
                     return;
                 }
-                result = previous / current;
+                result = parseFloat((previous / current).toFixed(5)).toString();
                 break;
             default:
                 return;
