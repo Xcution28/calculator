@@ -18,6 +18,9 @@
   align-items: end;
   border-bottom: 1px solid #000;
 }
+.calc-screen.error span {
+  font-size: 1.5rem;
+}
 .calc-screen span {
   font-size: 4rem;
   margin: 0;

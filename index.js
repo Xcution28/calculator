@@ -1,14 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
     const screen = document.querySelector('.calc-screen span')
+    const screenContainer = document.querySelector('.calc-screen');
     let currentInput = '0';
     let previousInput = '';
     let operator = '';
+    let isError = false;
 
     const updateScreen = () => {
         screen.textContent = currentInput;
+
+        if (isError) {
+            screenContainer.classList.add('error');
+        } else {
+            screenContainer.classList.remove('error');
+        }
     }
 
     const handleNumber = (number) => {
+        if (isError) {
+            clear();
+        }
+
         if (currentInput === '0' && number !== '.') {
             currentInput = number;
         } else {
@@ -18,6 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const handleOperator = (operation) => {
+        if (isError) {
+            clear();
+        }
+
         if (operator && previousInput && currentInput) {
             calculate();
         }
@@ -44,6 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 result = previous * current;
                 break;
             case '/':
+                if (current === 0) {
+                    currentInput = 'Делить на 0 нельзя';
+                    isError = true;
+                    updateScreen();
+                    return;
+                }
                 result = previous / current;
                 break;
             default:
@@ -59,15 +81,24 @@ document.addEventListener('DOMContentLoaded', () => {
         currentInput = '0';
         previousInput = '';
         operator = '';
+        isError = false;
         updateScreen();
     }
 
     const toggleSign = () => {
+        if (isError) {
+            clear();
+        }
+
         currentInput = (parseFloat(currentInput) * -1).toString();
         updateScreen();
     }
 
     const percent = () => {
+        if (isError) {
+            clear();
+        }
+
         currentInput = (parseFloat(currentInput) / 100).toString();
         updateScreen();
     }
