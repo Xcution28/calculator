@@ -22,6 +22,8 @@
   font-size: 4rem;
   margin: 0;
   padding: 12px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .calc-btns {
   display: flex;
