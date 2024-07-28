@@ -55,6 +55,23 @@ document.addEventListener('DOMContentLoaded', () => {
         previousInput = '';
     }
 
+    const clear = () => {
+        currentInput = '0';
+        previousInput = '';
+        operator = '';
+        updateScreen();
+    }
+
+    const toggleSign = () => {
+        currentInput = (parseFloat(currentInput) * -1).toString();
+        updateScreen();
+    }
+
+    const percent = () => {
+        currentInput = (parseFloat(currentInput) / 100).toString();
+        updateScreen();
+    }
+
     document.querySelectorAll('.calc-btn').forEach(button => {
         button.addEventListener('click', () => {
             if (button.classList.contains('nine') || button.classList.contains('eight') ||
@@ -70,6 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (button.classList.contains('equal')) {
                 calculate();
                 updateScreen();
+            } else if (button.classList.contains('ac')) {
+                clear();
+            } else if (button.classList.contains('plus-minus')) {
+                toggleSign();
+            } else if (button.classList.contains('percent')) {
+                percent();
             }
         });
     });
